@@ -1,0 +1,7 @@
+# Binarios y archivos temporales
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+packages/

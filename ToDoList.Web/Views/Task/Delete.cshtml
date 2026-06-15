@@ -1,0 +1,41 @@
+﻿@model ToDoList.Entities.TaskItem
+
+@{
+    ViewBag.Title = "Eliminar Tarea";
+}
+
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <h2>Eliminar Tarea</h2>
+        <h4 class="text-danger">¿Estás completamente seguro de que deseas eliminar este registro?</h4>
+        <hr />
+
+        <div>
+            <dl class="row">
+                <dt class="col-sm-3">Título:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Title)</dd>
+
+                <dt class="col-sm-3">Descripción:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+                <dt class="col-sm-3">Estado actual:</dt>
+                <dd class="col-sm-9">
+                    @(Model.IsCompleted ? "Completada" : "Pendiente")
+                </dd>
+
+                <dt class="col-sm-3">Fecha de Creación:</dt>
+                <dd class="col-sm-9">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color mt-4">
+                    <input type="submit" value="Confirmar Eliminación" class="btn btn-danger" />
+                    @Html.ActionLink("Volver al listado", "Index", null, new { @class = "btn btn-secondary ml-2" })
+                </div>
+            }
+        </div>
+    </div>
+</div>
